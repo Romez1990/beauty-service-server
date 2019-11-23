@@ -1,6 +1,9 @@
 # Python
 __pycache__/
 
+# Environment
+/.env
+
 # PyCharm
 .idea/**/workspace.xml
 .idea/**/dataSources/
