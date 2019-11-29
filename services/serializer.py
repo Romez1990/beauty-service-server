@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from .models import ServiceGroup, Service
+from .models import ServiceGroup, Service, Saloon
 
 
 class ServiceSerializer(ModelSerializer):
@@ -14,4 +14,10 @@ class ServiceGroupDetailSerializer(ModelSerializer):
 
     class Meta:
         model = ServiceGroup
+        fields = '__all__'
+
+
+class SaloonDetailSerializer(ModelSerializer):
+    class Meta:
+        model = Saloon
         fields = '__all__'
