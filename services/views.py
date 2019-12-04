@@ -4,7 +4,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.generics import ListAPIView
 
 from .models import ServiceGroup, Saloon, Service, Price, Appointment
-from .serializer import ServiceGroupDetailSerializer, SaloonDetailSerializer
+from .serializer import ServiceGroupDetailSerializer, PriceDetailSerializer
 
 
 class ServiceGroupsListView(ListAPIView):
@@ -13,7 +13,7 @@ class ServiceGroupsListView(ListAPIView):
 
 
 class FreeSaloonListView(ListAPIView):
-    serializer_class = SaloonDetailSerializer
+    serializer_class = PriceDetailSerializer
 
     def get_queryset(self):
         service_id = self.request.query_params.get('service')
@@ -67,4 +67,6 @@ class FreeSaloonListView(ListAPIView):
 
         saloons = Saloon.objects.all()
         saloons = filter(is_free, saloons)
-        return saloons
+
+        prices = Price.objects.filter(saloon__in=saloons, service=service)
+        return prices
