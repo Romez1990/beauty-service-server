@@ -55,6 +55,7 @@ class Price(Model):
 
 class Appointment(Model):
     name = CharField(verbose_name='Имя', max_length=100)
+    phone = CharField(verbose_name='Телефон', max_length=100)
     service = ForeignKey(Service, verbose_name='Услуга', on_delete=CASCADE)
     datetime = DateTimeField(verbose_name='Дата и время')
     saloon = ForeignKey(Saloon, verbose_name='Салон', on_delete=CASCADE)
