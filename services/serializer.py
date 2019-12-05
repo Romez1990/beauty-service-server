@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from .models import ServiceGroup, Service, Saloon, Price
+from .models import ServiceGroup, Service, Saloon, Price, Appointment
 
 
 class ServiceSerializer(ModelSerializer):
@@ -28,4 +28,10 @@ class PriceDetailSerializer(ModelSerializer):
 
     class Meta:
         model = Price
+        fields = '__all__'
+
+
+class AppointmentDetailSerializer(ModelSerializer):
+    class Meta:
+        model = Appointment
         fields = '__all__'
