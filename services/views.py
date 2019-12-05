@@ -1,10 +1,11 @@
 from datetime import datetime, timedelta
 from pytz import UTC
 from rest_framework.exceptions import ValidationError
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView
 
 from .models import ServiceGroup, Saloon, Service, Price, Appointment
-from .serializer import ServiceGroupDetailSerializer, PriceDetailSerializer
+from .serializer import ServiceGroupDetailSerializer, PriceDetailSerializer, \
+    AppointmentDetailSerializer
 
 
 class ServiceGroupsListView(ListAPIView):
@@ -69,3 +70,7 @@ class FreeSaloonListView(ListAPIView):
 
         prices = Price.objects.filter(saloon__in=saloons, service=service)
         return prices
+
+
+class AppointmentCreateView(CreateAPIView):
+    serializer_class = AppointmentDetailSerializer
