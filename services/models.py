@@ -49,6 +49,7 @@ class Price(Model):
     class Meta:
         verbose_name = 'Цена'
         verbose_name_plural = 'Цены'
+        unique_together = (('saloon', 'service'),)
 
     def __str__(self):
         return f'{self.saloon.name} {self.service.name} {self.price}'
