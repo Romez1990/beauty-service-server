@@ -42,6 +42,7 @@ class FreeSaloonListView(ListAPIView):
 
         def is_free(saloon):
             appointments = Appointment.objects.filter(saloon=saloon)
+            counter = 0
             for appointment in appointments:
                 if any([
                     all([
@@ -62,7 +63,9 @@ class FreeSaloonListView(ListAPIView):
                     timedelta(minutes=appointment.service.duration)
                     == datetime_obj + timedelta(minutes=service.duration),
                 ]):
-                    return False
+                    counter += 1
+                    if counter > saloon.employees_number:
+                        return False
             return True
 
         saloons = Saloon.objects.all()

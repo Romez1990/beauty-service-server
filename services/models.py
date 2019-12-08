@@ -31,6 +31,7 @@ class Saloon(Model):
     name = CharField(verbose_name='Название', max_length=100)
     address = CharField(verbose_name='Адрес', max_length=100)
     phone = CharField(verbose_name='Телефон', max_length=30)
+    employees_number = IntegerField(verbose_name='Количество сотрудников')
 
     class Meta:
         verbose_name = 'Салон'
