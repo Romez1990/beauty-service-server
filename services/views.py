@@ -68,7 +68,9 @@ class FreeSaloonListView(ListAPIView):
         saloons = Saloon.objects.all()
         saloons = filter(is_free, saloons)
 
-        prices = Price.objects.filter(saloon__in=saloons, service=service)
+        prices = (Price.objects
+                  .filter(saloon__in=saloons, service=service)
+                  .order_by('price'))
         return prices
 
 
