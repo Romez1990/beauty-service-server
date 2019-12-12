@@ -7,5 +7,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://ec2-46-137-113-157.eu-west-1.compute.amazonaws.com:5432/db220i0rdgc7ua</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="Local database" uuid="7e93ad7e-64b3-4b15-ae61-fd28317bce86">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/beauty_service</jdbc-url>
+    </data-source>
   </component>
 </project>
