@@ -3,7 +3,7 @@ from django.db.models import Model, CharField, IntegerField, \
 
 
 class ServiceGroup(Model):
-    name = CharField(verbose_name='Название', max_length=50)
+    name = CharField(verbose_name='Название', max_length=50, unique=True)
 
     class Meta:
         verbose_name = 'Группа услуг'
@@ -16,7 +16,7 @@ class ServiceGroup(Model):
 class Service(Model):
     group = ForeignKey(ServiceGroup, verbose_name='Группа услуг',
                        related_name='services', on_delete=CASCADE)
-    name = CharField(verbose_name='Название', max_length=50)
+    name = CharField(verbose_name='Название', max_length=50, unique=True)
     duration = IntegerField(verbose_name='Длительность')
 
     class Meta:
@@ -28,7 +28,7 @@ class Service(Model):
 
 
 class Saloon(Model):
-    name = CharField(verbose_name='Название', max_length=100)
+    name = CharField(verbose_name='Название', max_length=100, unique=True)
     address = CharField(verbose_name='Адрес', max_length=100)
     phone = CharField(verbose_name='Телефон', max_length=30)
     employees_number = IntegerField(verbose_name='Количество сотрудников')
